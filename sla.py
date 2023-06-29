@@ -4,7 +4,7 @@ def generate_table(rows):
     table = []
     names = ['Bulbasaur', 'Charmander', 'Squirtle', 'Pikachu', 'Rattata', 'Mewtwo','Dragonite', 'Vaporeon', 'Gloom', 'Golbat', 'Zubat', 'Charizard', 'Furret', 'Silcoon', 'Roserade', 'Crobat', 'Caterpie', 'Metapod']     
     regioes = ['Kanto', 'Johto', 'Hoenn', 'Sinnoh', 'Hisui', 'Unova', 'Kalos', 'Alola', 'Galar',  'Paldea']
-    mestres = ['Vanessa', 'Rafael', 'Minoru', 'Baldochi', 'Melisse', 'Rod Lima', 'Elisa', 'Philipe']
+    mestres = ['Vanessa', 'Rafael', 'Minoru', 'Baldochi', 'Melisse', 'Rod.Lima', 'Elisa', 'Philipe']
     ranking = ['A', 'B', 'C', 'D', 'E']
     
     for i in range(1, rows+1):
@@ -22,6 +22,7 @@ table = generate_table(10000)
 # Save the table to a text file
 filename = "table.txt"
 with open(filename, "w") as file:
+    file.write("ID  Nome  Mestre  Regiao  Rank\n")
     for row in table:
         file.write(" ".join(map(str, row)) + "\n")
 
