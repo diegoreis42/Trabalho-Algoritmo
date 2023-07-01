@@ -7,6 +7,9 @@
 // tamanho de cada linha
 #define SIZE_DATA_LINE 41
 
+//nome do arquivo
+#define FILE_NAME "table.txt"
+
 typedef struct elem {
   int key;
   int line;
@@ -14,7 +17,7 @@ typedef struct elem {
 
 // Funçao para ler ID das linhas e armazenar em um vetor
 void leArquivo(int *indexes){
-  FILE *f = fopen("table.txt", "r");
+  FILE *f = fopen(FILE_NAME, "r");
   char line[100];
   int j = 0;
 
@@ -39,7 +42,7 @@ void printLine(FILE *f, int line){
 int main() {
     int buffer[10000];
     char line[256];
-    FILE *f = fopen("table.txt", "r");
+    FILE *f = fopen(FILE_NAME, "r");
       
 
     return 0;
