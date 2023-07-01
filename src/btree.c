@@ -30,7 +30,6 @@ void leArquivo(int *indexes){
   fclose(f);
 }
 
-void printLineBtree(FILE *f, int line){
 /* funçao para printar o conteudo de uma linha
  especifica do arquivo table.txt
 
@@ -39,18 +38,15 @@ void printLineBtree(FILE *f, int line){
 f    ->  ponteiro para o arquivo
 line ->  linha do arquivo
 */
-
-
-
-
+void printLineBtree(FILE *f, int line){
   char buffer[50];
   
   fseek(f, FIRST_LINE + (SIZE_DATA_LINE * line), SEEK_SET);
   fgets(buffer, sizeof(buffer), f);
   printf("%s\n", buffer);
+  rewind(f);
 }
 
-int printLineLinear(FILE *f, int id){
 /* funçao para printar o conteudo de uma linha
  * do arquivo table.txt, procurando linearmente!
  *
@@ -64,21 +60,20 @@ int printLineLinear(FILE *f, int id){
  * 0 -> Nao encontrou o id
  * 1 -> Encontrou o id
  */
-
-
-  char buffer[50];
-  int j = 0, h;
+int printLineLinear(FILE *f, int id){
+  char buffer[100];
+  int h = 0;
 
   while (fgets(buffer, sizeof(buffer), f) != NULL) {
     sscanf(buffer, "%d", &h);
     if(h == id) {
-      fgets(buffer, sizeof(buffer), f);
       printf("%s\n", buffer);
+      rewind(f);
       return 1;
     }
-    j++;
   }
 
   return 0;
 }
+
 

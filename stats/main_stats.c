@@ -29,9 +29,6 @@ int main ()
     mean += time_spent;
   }
 
-
-
-  printf("Tempo total da busca Linear: %.4f\n", (double) mean);
   printf("Tempo medio da busca Linear: %.4f\n", (double) mean / SEARCH_NUM);
 
 
