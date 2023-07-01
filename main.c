@@ -8,8 +8,7 @@ int main ()
 {
   int choice;
   
-while (choice != 0) {
-
+do {
   printf("1. Criar indice\n");
   printf("2. Procurar Elemento\n");
   printf("3. Remover registro\n");
@@ -27,7 +26,9 @@ while (choice != 0) {
       printf("Ate mais!\n");
     default:
       printf("Tem essa opçao nao\n");
+       
   }
-}
+}while (choice != 0);
+
   return 0;
 }
