@@ -8,13 +8,16 @@
  * */
 int main ()
 {
-  int indexes[10000];
+  FILE *f = fopen(FILE_NAME, "r");
 
   clock_t begin = clock();
     // chama a funçao aqui
+    printLineLinear(f, 6059);
   clock_t end = clock();
 
   double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+  printf("Tempo da busca Linear: %f\n", time_spent);
 
 
   return 0;
