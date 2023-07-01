@@ -8,7 +8,7 @@
 #define SIZE_DATA_LINE 41
 
 //nome do arquivo
-#define FILE_NAME "table.txt"
+#define FILE_NAME "../data/table.txt"
 
 typedef struct elem {
   int key;
@@ -30,20 +30,55 @@ void leArquivo(int *indexes){
   fclose(f);
 }
 
-void printLine(FILE *f, int line){
+void printLineBtree(FILE *f, int line){
+/* funçao para printar o conteudo de uma linha
+ especifica do arquivo table.txt
+
+ Entrada
+----------------------
+f    ->  ponteiro para o arquivo
+line ->  linha do arquivo
+*/
+
+
+
+
   char buffer[50];
   
   fseek(f, FIRST_LINE + (SIZE_DATA_LINE * line), SEEK_SET);
-  fgets(buffer, sizeof(line), f);
+  fgets(buffer, sizeof(buffer), f);
   printf("%s\n", buffer);
 }
 
+int printLineLinear(FILE *f, int id){
+/* funçao para printar o conteudo de uma linha
+ * do arquivo table.txt, procurando linearmente!
+ *
+ *  Entrada  
+ * -----------------
+ * f  -> ponteiro para o arquivo
+ * id -> identificador da linha
+ *
+ * Saida
+ * -----------------
+ * 0 -> Nao encontrou o id
+ * 1 -> Encontrou o id
+ */
 
-int main() {
-    int buffer[10000];
-    char line[256];
-    FILE *f = fopen(FILE_NAME, "r");
-      
 
-    return 0;
+  char buffer[50];
+  int j = 0, h;
+
+  while (fgets(buffer, sizeof(buffer), f) != NULL) {
+    sscanf(buffer, "%d", &h);
+    if(h == id) {
+      fgets(buffer, sizeof(buffer), f);
+      printf("%s\n", buffer);
+      return 1;
+    }
+    j++;
+  }
+
+  return 0;
 }
+
