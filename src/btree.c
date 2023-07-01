@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,11 +8,6 @@
 
 //nome do arquivo
 #define FILE_NAME "../data/table.txt"
-
-typedef struct elem {
-  int key;
-  int line;
-}Elem;
 
 // Funçao para ler ID das linhas e armazenar em um vetor
 void leArquivo(int *indexes){
@@ -30,6 +24,7 @@ void leArquivo(int *indexes){
   fclose(f);
 }
 
+void printLineBtree(FILE *f, int line){
 /* funçao para printar o conteudo de uma linha
  especifica do arquivo table.txt
 
@@ -38,7 +33,7 @@ void leArquivo(int *indexes){
 f    ->  ponteiro para o arquivo
 line ->  linha do arquivo
 */
-void printLineBtree(FILE *f, int line){
+
   char buffer[50];
   
   fseek(f, FIRST_LINE + (SIZE_DATA_LINE * line), SEEK_SET);
@@ -47,6 +42,7 @@ void printLineBtree(FILE *f, int line){
   rewind(f);
 }
 
+int printLineLinear(FILE *f, int id){
 /* funçao para printar o conteudo de uma linha
  * do arquivo table.txt, procurando linearmente!
  *
@@ -60,7 +56,7 @@ void printLineBtree(FILE *f, int line){
  * 0 -> Nao encontrou o id
  * 1 -> Encontrou o id
  */
-int printLineLinear(FILE *f, int id){
+
   char buffer[100];
   int h = 0;
 
