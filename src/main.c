@@ -1,34 +1,37 @@
-#include <stdlib.h>
 #include <stdio.h>
+
 #include "btree.h"
 
+int main(){
+    btree *arv;
+    int op;
+    char nomeArquivo[30];
 
+    do{
+        printf("\nMenu: ");
+        printf("\n1 - Criar indice;"
+               "\n2 - Procurar elementos;"
+               "\n3 - Remover registro;"
+               "\n4 - Sair.\n"
+               "\nOpcao: ");
+        scanf("%d", &op);
 
-int main ()
-{
-  int choice;
-  
-do {
-  printf("1. Criar indice\n");
-  printf("2. Procurar Elemento\n");
-  printf("3. Remover registro\n");
-  printf("4. Sair\n");
-  scanf("%d", &choice);
+        if(op == 1){
 
-  switch (choice) {
-    case 1:
-      //chama funçao criar indice
-    case 2:
-      //chama funçao Procurar elemento
-    case 3:
-      // chama funçao remover regstro
-    case 4:
-      printf("Ate mais!\n");
-    default:
-      printf("Tem essa opçao nao\n");
-       
-  }
-}while (choice != 0);
-
-  return 0;
+            arv = criaArvore();
+            processaDados(arv, FILE_NAME, 1);
+        }
+        if(op == 2){
+            //scanf("%s", nomeArquivo);
+            //processaDados(arv, nomeArquivo, 2);// 2 = busca buscaElemento();
+            //
+        }
+        if(op == 3){
+            //scanf("%s", nomeArquivo);
+            //processaDados(arv, nomeArquivo, 3);// 3 = remove removeregistro()
+        }
+    }
+    while(op != 4);
+    liberArvore(arv);
+    return 0;
 }

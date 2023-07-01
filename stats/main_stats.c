@@ -1,3 +1,7 @@
+// made by Diego Reis
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
