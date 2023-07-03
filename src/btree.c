@@ -21,7 +21,8 @@ Par* processaDados() {
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%d", &(parArray[lineNumber].value));
         parArray[lineNumber].line = lineNumber;
-        printf("Linha: %d   Valor: %d\n", parArray[lineNumber].line, parArray[lineNumber].value);
+
+        printf("Linha: %d Valor: %d\n", parArray[lineNumber].line, parArray[lineNumber].value);
         lineNumber++;
     }
 
@@ -165,7 +166,10 @@ void printBTree(BTree *tree) {
     }
 }
 
-int searchNode(BTreeNode *node, int value, int *lineNumber) {
+
+
+
+BTreeNode* searchNode(BTreeNode* node, int value) {
     int i = 0;
 
     while (i < node->numKeys && value > node->keys[i].value) {
@@ -173,45 +177,50 @@ int searchNode(BTreeNode *node, int value, int *lineNumber) {
     }
 
     if (i < node->numKeys && value == node->keys[i].value) {
-        *lineNumber = node->keys[i].line;
-        return 1;
+      printf("erro aqui\n");
+        return node;
     }
 
     if (node->isLeaf) {
-        return 0;
+        return NULL;
     }
 
-    return searchNode(node->children[i], value, lineNumber);
+    return searchNode(node->children[i], value);
 }
 
-int searchBTree(BTree *tree, int value) {
-    if (tree->root == NULL) {
-        return -1;  // Value not found
-    }
-
-    int lineNumber = 42;  // Initialize with an invalid line number
-    int found = searchNode(tree->root, value, &lineNumber);
-
-    if (found) {
-        return lineNumber;
-    } else {
-        return 24;  // Value not found
-    }
-}
 
 int main (int argc, char *argv[])
 {
   Par *parArray = processaDados();
+  int value = 6184;
 
   BTree tree;
     tree.root = createNode();
 
  for(int i = 0; i < 10000; i++) {
+        printf("Linha Entrada BTree: %d Valor: %d\n", parArray[i].line, parArray[i].value);
               insertBTree(&tree, parArray[i]);
             }
+  BTreeNode *achou = searchNode(tree.root, value);
 
- int linha = searchBTree(&tree, 8565);
+  if (achou != NULL) {
+    for (int i = 0; i < achou->numKeys; i++) {
+      if(achou->keys[i].value == value) {
+        Par *par = &(achou->keys[i]);
+        printf("Found Par: value=%d, line=%d\n", par->value, par->line);             
+        break;
+      }
+    }
 
-  printf("Linha %d\n", linha);
+  } else {
+      printf("F\n");
+    }
+
+
+
+
+
+  free(parArray);
+  free(achou);
   return 0;
 }

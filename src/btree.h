@@ -36,5 +36,5 @@ void insertNonFull(BTreeNode *node, Par par);
 void insertBTree(BTree *tree, Par par);
 void printBTreeNode(BTreeNode *node);
 void printBTree(BTree *tree);
-int searchNode(BTreeNode *node, int value, int *lineNumber);
-int searchBTree(BTree *tree, int value);
+BTreeNode* searchNode(BTreeNode *node, int value);
+BTreeNode* searchBTree(BTree *tree, int value);
