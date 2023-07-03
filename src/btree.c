@@ -1,25 +1,7 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include "btree.h"
 
-#define MAX_KEYS 4
-#define FILE_NAME "../data/table.txt"
-
-typedef struct {
-    int value;
-    int line;
-} Par;
-
-typedef struct BTreeNode {
-    int numKeys;
-    Par keys[MAX_KEYS];
-    struct BTreeNode *children[MAX_KEYS + 1];
-    int isLeaf;
-} BTreeNode;
-
-typedef struct {
-    BTreeNode *root;
-} BTree;
 
 Par* processaDados() {
     FILE *file = fopen(FILE_NAME, "r");
@@ -39,6 +21,7 @@ Par* processaDados() {
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%d", &(parArray[lineNumber].value));
         parArray[lineNumber].line = lineNumber;
+        printf("Linha: %d   Valor: %d\n", parArray[lineNumber].line, parArray[lineNumber].value);
         lineNumber++;
     }
 
@@ -46,6 +29,30 @@ Par* processaDados() {
     return parArray;
 }
 
+void printLineBtree(FILE *f, int line) {
+  char buffer[50];
+
+  fseek(f, (SIZE_DATA_LINE * line), SEEK_SET);
+  fgets(buffer, sizeof(buffer), f);
+  printf("%s\n", buffer);
+  rewind(f);
+}
+
+int printLineLinear(FILE *f, int id) {
+  char buffer[50];
+  int h = 0;
+
+  while (fgets(buffer, sizeof(buffer), f) != NULL) {
+    sscanf(buffer, "%d", &h);
+    if(h == id) {
+      printf("%s\n", buffer);
+      rewind(f);
+      return 1;
+    }
+  }
+
+  return 0;
+}
 
 BTreeNode* createNode() {
     BTreeNode *newNode = (BTreeNode *)malloc(sizeof(BTreeNode));
@@ -158,18 +165,34 @@ void printBTree(BTree *tree) {
     }
 }
 
-int main() {
-    BTree tree;
-    tree.root = createNode();
+BTreeNode* searchNode(BTreeNode *node, int value) {
+    int i = 0;
 
-    Par *parArray = processaDados();
-
-    for(int i = 0; i < 10000; i++){
-      insertBTree(&tree, parArray[i]);
+    while (i < node->numKeys && value > node->keys[i].value) {
+        i++;
     }
 
-    printBTree(&tree);
+    if (i < node->numKeys && value == node->keys[i].value) {
+        return node;
+    }
 
-    return 0;
+    if (node->isLeaf) {
+        return NULL;
+    }
+
+    return searchNode(node->children[i], value);
 }
 
+BTreeNode* searchBTree(BTree *tree, int value) {
+    if (tree->root == NULL) {
+        return NULL;
+    }
+
+    return searchNode(tree->root, value);
+}
+
+int main (int argc, char *argv[])
+{
+  Par *par = processaDados();
+  return 0;
+}
