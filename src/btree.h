@@ -1,55 +1,68 @@
 /* projeto desenvolvido para a disciplina de Algoritmos
  * e Estrutura de Dados II*/
-
 #include <stdio.h>
+
+#ifndef BTREE_H
+#define BTREE_H
+
 
 #define ORDEM_MIN_BTREE 2
 
 #define FILE_NAME "../data/table.txt"
 
-typedef struct valor valor;
-
-typedef struct no no;
-
-typedef struct btree btree;
 
 
+typedef struct par{
+    int chave;
+    int linha;
 
+}Par;
 
-/////////////////////// - menu - ///////////////////////////////////////
+typedef struct no{
+    int n;
+    int qtdFilhos;
+    
+    Par *chaves;
+    void **valores;
+    struct no **filhos;
+    
+}No;
 
-int processaDados(btree *arv, char *nomeArquivo, int tipo);
+typedef struct btree{
+    int ordem;
+    int min;
 
-void printBtree(no *elemento);
+    No *raiz; 
+}Btree;
 
-void printLineBtree(FILE *f, int line);
+Par* processaDados();
 
-int printLineLinear(FILE *f, int id);
+void insere(Btree *arv, Par *parArray);
+/* B-Tree */
+Btree criar_btree(int ordem);
 
-////////////////////// - árvore - /////////////////////////////////////
+void *pesquisar_btree(Btree arv, int chave);
 
-btree *criaArvore();
+void inserir_btree(Btree *arv, Par chave, void *valor);
 
-void *buscaElemento(btree arv, int chave);
+void liberar_btree(Btree *arv);
 
-void *insercao(btree *arv, valor elemento, void *val);
+/* Nó B-Tree */
+No *novo_noBtree(Btree arv);
+No *novoItem_noBtree(Btree arv, Par chave, void *valor);
 
-void liberArvore(btree *arv);
+void mover_noBtree(No *entrada, int indiceEntrada, No *saida, int indiceSaida);
 
-////////////////////// - nó -  ////////////////////////////////////
+No *pesquisar_noBtree(No *raiz, int chave, int *indice);
 
-no *adicionaNo(btree arv);
+void split_noBtree(No *raiz, Btree arv, No *novoNo, int i);
 
-no *insereElemento(btree arv, valor chave, void *valor);
+No *inserir_noBtree(No *raiz, Btree arv, Par chave, void *valor);
 
-void rotacao(no *entrada, int indent, no *saida, int indsai);
+void liberar_noBtree(No *raiz, Btree arv);
 
-no *buscaNo(no *raiz, int chave, int *indice);
+void printBtree(No *elemento);
 
-void *split(no *raiz, btree arv, no *novoNo, int i);
+void liberar_um_noBtree(No *no);
 
-no *insereNo(no *raiz, btree arv, valor chave, void * val);
-
-void liberaNo(no *raiz, btree arv);
-
-
+#endif

@@ -1,37 +1,22 @@
-#include <stdio.h>
-
 #include "btree.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+
+
 int main(){
-    btree *arv;
-    int op;
-    char nomeArquivo[30];
 
-    do{
-        printf("\nMenu: ");
-        printf("\n1 - Criar indice;"
-               "\n2 - Procurar elementos;"
-               "\n3 - Remover registro;"
-               "\n4 - Sair.\n"
-               "\nOpcao: ");
-        scanf("%d", &op);
+    Btree arv = criar_btree(3);
+    Par *parArray = processaDados();
+    
+    insere(&arv, parArray);
+  
+    printBtree(arv.raiz);
+    
+    printf("\n");
 
-        if(op == 1){
-
-            arv = criaArvore();
-            processaDados(arv, FILE_NAME, 1);
-        }
-        if(op == 2){
-            //scanf("%s", nomeArquivo);
-            //processaDados(arv, nomeArquivo, 2);// 2 = busca buscaElemento();
-            //
-        }
-        if(op == 3){
-            //scanf("%s", nomeArquivo);
-            //processaDados(arv, nomeArquivo, 3);// 3 = remove removeregistro()
-        }
-    }
-    while(op != 4);
-    liberArvore(arv);
     return 0;
 }
