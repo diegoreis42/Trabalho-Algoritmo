@@ -12,6 +12,10 @@ int main(){
     tree.root = createNode();
     FILE *f = fopen(FILE_NAME, "r");
 
+            Par *parArray = processaDados();
+            for(int i = 0; i < 10000; i++) {
+              insertBTree(&tree, parArray[i]);
+            }
     do{
         printf("\nMenu: ");
         printf("\n1 - Criar indice;"
@@ -22,16 +26,10 @@ int main(){
         scanf("%d",&op);
 
         if(op == 1){
-            Par *parArray = processaDados();
-            for(int i = 0; i < 10000; i++) {
-              insertBTree(&tree, parArray[i]);
-            }
         }
         if(op == 2){
             scanf("%d", &elem);
-            BTreeNode *node = searchBTree(&tree, elem);
-            printf("%d = %d\n", node->keys->line, node->keys->value);
-            printLineBtree(f, node->keys->line);
+            printLineBtree(f, searchBTree(&tree, elem));
         }
         if(op == 3){
             //scanf("%s", nomeArquivo);

@@ -1,11 +1,9 @@
 #include <stdio.h>
 #define FILE_NAME "../data/table.txt"
-// cabeçalho do arquivo table.txt
-#define FIRST_LINE 31
 // tamanho de cada linha
 #define SIZE_DATA_LINE 41
 
-#define MAX_KEYS 4
+#define MAX_KEYS 5
 
 typedef struct {
     int value;
@@ -38,5 +36,5 @@ void insertNonFull(BTreeNode *node, Par par);
 void insertBTree(BTree *tree, Par par);
 void printBTreeNode(BTreeNode *node);
 void printBTree(BTree *tree);
-BTreeNode* searchNode(BTreeNode *node, int value);
-BTreeNode* searchBTree(BTree *tree, int value);
+int searchNode(BTreeNode *node, int value, int *lineNumber);
+int searchBTree(BTree *tree, int value);

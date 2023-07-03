@@ -17,7 +17,7 @@ Par* processaDados() {
     }
 
     int lineNumber = 0;
-    char line[60];
+    char line[100];
     while (fgets(line, sizeof(line), file) != NULL) {
         sscanf(line, "%d", &(parArray[lineNumber].value));
         parArray[lineNumber].line = lineNumber;
@@ -165,7 +165,7 @@ void printBTree(BTree *tree) {
     }
 }
 
-BTreeNode* searchNode(BTreeNode *node, int value) {
+int searchNode(BTreeNode *node, int value, int *lineNumber) {
     int i = 0;
 
     while (i < node->numKeys && value > node->keys[i].value) {
@@ -173,26 +173,45 @@ BTreeNode* searchNode(BTreeNode *node, int value) {
     }
 
     if (i < node->numKeys && value == node->keys[i].value) {
-        return node;
+        *lineNumber = node->keys[i].line;
+        return 1;
     }
 
     if (node->isLeaf) {
-        return NULL;
+        return 0;
     }
 
-    return searchNode(node->children[i], value);
+    return searchNode(node->children[i], value, lineNumber);
 }
 
-BTreeNode* searchBTree(BTree *tree, int value) {
+int searchBTree(BTree *tree, int value) {
     if (tree->root == NULL) {
-        return NULL;
+        return -1;  // Value not found
     }
 
-    return searchNode(tree->root, value);
+    int lineNumber = 42;  // Initialize with an invalid line number
+    int found = searchNode(tree->root, value, &lineNumber);
+
+    if (found) {
+        return lineNumber;
+    } else {
+        return 24;  // Value not found
+    }
 }
 
 int main (int argc, char *argv[])
 {
-  Par *par = processaDados();
+  Par *parArray = processaDados();
+
+  BTree tree;
+    tree.root = createNode();
+
+ for(int i = 0; i < 10000; i++) {
+              insertBTree(&tree, parArray[i]);
+            }
+
+ int linha = searchBTree(&tree, 8565);
+
+  printf("Linha %d\n", linha);
   return 0;
 }
