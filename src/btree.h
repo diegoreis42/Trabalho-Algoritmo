@@ -5,9 +5,9 @@
 // tamanho de cada linha
 #define SIZE_DATA_LINE 41
 // chaves maximas e minimas da arvore
-#define MAX_KEYS 5
+#define MAX_KEYS 8
 
-#define MIN_KEYS 3
+#define MIN_KEYS 4
 
 // structs
 typedef struct {

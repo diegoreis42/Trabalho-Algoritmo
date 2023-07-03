@@ -32,6 +32,7 @@ int main ()
       insertBTree(&tree, parArray[i]);
   }
 
+  printf("Busca Linear\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
     randN = rand() % NUM_ELEM + 1;
@@ -51,6 +52,7 @@ int main ()
   }
 
 
+printf("Busca BTree\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
     randN = rand() % NUM_ELEM + 1;

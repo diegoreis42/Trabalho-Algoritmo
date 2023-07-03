@@ -180,7 +180,7 @@ BTreeNode* searchNode(BTreeNode* node, int value) {
     }
 
     if (node->isLeaf) {
-        return NULL;
+       return NULL;
     }
 
     return searchNode(node->children[i], value);
