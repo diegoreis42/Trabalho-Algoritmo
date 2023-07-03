@@ -1,0 +1,415 @@
+Busca Linear
+===========================
+01014 Charizard Rod.Lima Johto A        
+
+02939 Bulbasaur Rod.Lima Alola C        
+
+01213 Charizard Elisa Paldea A          
+
+06695 Caterpie Philipe Kalos C          
+
+06123 Silcoon Rod.Lima Kalos A          
+
+00226 Zubat Philipe Alola C             
+
+00975 Pikachu Rafael Unova C            
+
+03367 Mewtwo Philipe Unova A            
+
+01800 Dragonite Elisa Johto C           
+
+02609 Mewtwo Baldochi Johto E           
+
+01904 Zubat Elisa Hisui C               
+
+05760 Golbat Elisa Galar B              
+
+03005 Metapod Minoru Alola C            
+
+01663 Caterpie Minoru Hisui E           
+
+05709 Furret Vanessa Kanto B            
+
+06617 Metapod Minoru Sinnoh B           
+
+03566 Charmander Elisa Johto E          
+
+01828 Squirtle Melise Galar A           
+
+09145 Zubat Baldochi Johto C            
+
+06607 Dragonite Baldochi Johto C        
+
+02354 Vaporeon Elisa Kalos E            
+
+07958 Rattata Philipe Kanto B           
+
+03793 Dragonite Baldochi Hisui D        
+
+06933 Silcoon Melise Sinnoh D           
+
+01934 Roserade Vanessa Hisui B          
+
+03444 Caterpie Baldochi Unova A         
+
+01382 Silcoon Rod.Lima Sinnoh C         
+
+04348 Metapod Philipe Sinnoh B          
+
+06137 Furret Rafael Johto C             
+
+08140 Mewtwo Melise Paldea D            
+
+09540 Vaporeon Baldochi Paldea B        
+
+03502 Squirtle Minoru Hisui C           
+
+07431 Gloom Philipe Kanto A             
+
+07104 Dragonite Rod.Lima Hoenn D        
+
+06548 Mewtwo Rafael Unova E             
+
+03553 Dragonite Philipe Kalos B         
+
+03682 Mewtwo Elisa Johto E              
+
+07522 Bulbasaur Elisa Kanto B           
+
+06919 Crobat Minoru Unova B             
+
+01833 Zubat Rod.Lima Sinnoh B           
+
+00131 Pikachu Rafael Alola C            
+
+05174 Roserade Minoru Kalos A           
+
+07593 Roserade Rafael Kanto A           
+
+03135 Metapod Minoru Hoenn D            
+
+06836 Furret Minoru Unova D             
+
+09653 Caterpie Philipe Alola C          
+
+06103 Crobat Vanessa Johto A            
+
+00401 Pikachu Rod.Lima Paldea E         
+
+01480 Golbat Minoru Hisui C             
+
+05247 Rattata Vanessa Hisui E           
+
+07007 Caterpie Melise Hoenn A           
+
+00185 Crobat Philipe Hoenn C            
+
+09556 Squirtle Melise Hisui C           
+
+07151 Caterpie Rod.Lima Alola E         
+
+07117 Charmander Elisa Hisui B          
+
+07842 Gloom Vanessa Galar E             
+
+00595 Charizard Rafael Galar D          
+
+04850 Gloom Elisa Kanto B               
+
+02189 Zubat Vanessa Galar B             
+
+03083 Vaporeon Elisa Hoenn C            
+
+02990 Dragonite Melise Hoenn C          
+
+08080 Gloom Baldochi Kalos D            
+
+06584 Golbat Minoru Sinnoh C            
+
+00420 Caterpie Vanessa Unova D          
+
+01535 Rattata Rafael Kanto E            
+
+03132 Golbat Rafael Sinnoh A            
+
+00324 Caterpie Melise Kalos A           
+
+05216 Silcoon Vanessa Johto A           
+
+07005 Crobat Elisa Paldea E             
+
+07242 Furret Rod.Lima Alola C           
+
+03401 Squirtle Minoru Paldea E          
+
+03487 Mewtwo Baldochi Unova C           
+
+08767 Gloom Baldochi Johto B            
+
+00993 Squirtle Rafael Johto D           
+
+02973 Pikachu Melise Kanto D            
+
+05602 Caterpie Elisa Unova A            
+
+06997 Crobat Vanessa Hoenn E            
+
+09076 Vaporeon Vanessa Sinnoh B         
+
+06003 Charizard Minoru Galar C          
+
+08477 Charizard Philipe Hisui A         
+
+00674 Charizard Melise Galar B          
+
+09361 Vaporeon Rod.Lima Alola C         
+
+05013 Caterpie Minoru Johto A           
+
+06582 Squirtle Rod.Lima Kanto C         
+
+06512 Dragonite Elisa Unova B           
+
+02130 Pikachu Minoru Sinnoh A           
+
+04423 Charmander Philipe Johto A        
+
+03458 Caterpie Rod.Lima Hisui B         
+
+06979 Gloom Vanessa Kanto B             
+
+02963 Gloom Philipe Hoenn D             
+
+06540 Rattata Rafael Galar A            
+
+06320 Roserade Philipe Hoenn E          
+
+01042 Pikachu Philipe Sinnoh D          
+
+09475 Squirtle Rod.Lima Sinnoh E        
+
+03091 Charmander Minoru Sinnoh E        
+
+02576 Vaporeon Rod.Lima Sinnoh C        
+
+08958 Vaporeon Baldochi Kalos B         
+
+03414 Caterpie Melise Galar A           
+
+04144 Golbat Melise Kalos D             
+
+05963 Charizard Minoru Johto E          
+
+Busca BTree
+===========================
+07007 Caterpie Melise Hoenn A           
+
+07544 Silcoon Baldochi Kalos A          
+
+09449 Zubat Melise Johto D              
+
+05773 Caterpie Minoru Hoenn A           
+
+04888 Charizard Melise Alola E          
+
+02422 Metapod Melise Unova E            
+
+01375 Mewtwo Rod.Lima Paldea D          
+
+08236 Dragonite Minoru Kanto C          
+
+01497 Mewtwo Elisa Kanto B              
+
+03729 Zubat Baldochi Alola C            
+
+06712 Caterpie Elisa Kanto E            
+
+08522 Pikachu Melise Kalos B            
+
+09441 Rattata Rafael Galar E            
+
+08077 Rattata Rafael Hisui C            
+
+05103 Zubat Vanessa Galar C             
+
+02304 Roserade Vanessa Johto D          
+
+00206 Mewtwo Vanessa Unova B            
+
+05877 Squirtle Philipe Unova C          
+
+02113 Bulbasaur Minoru Galar B          
+
+03536 Rattata Elisa Paldea E            
+
+08839 Rattata Rod.Lima Paldea E         
+
+05004 Pikachu Minoru Galar E            
+
+06208 Crobat Baldochi Unova D           
+
+09880 Metapod Rod.Lima Kalos A          
+
+04479 Charizard Baldochi Alola B        
+
+09298 Vaporeon Rafael Johto A           
+
+08808 Squirtle Rafael Galar C           
+
+09788 Dragonite Baldochi Johto E        
+
+09064 Squirtle Melise Johto B           
+
+02951 Crobat Vanessa Hisui A            
+
+05750 Crobat Elisa Sinnoh B             
+
+06070 Mewtwo Rod.Lima Johto A           
+
+06846 Furret Vanessa Unova D            
+
+01551 Zubat Rafael Kalos B              
+
+08195 Golbat Melise Sinnoh A            
+
+08085 Metapod Rod.Lima Galar A          
+
+03972 Roserade Rod.Lima Galar C         
+
+05921 Gloom Minoru Paldea B             
+
+06320 Roserade Philipe Hoenn E          
+
+01820 Mewtwo Elisa Paldea E             
+
+09649 Charmander Vanessa Sinnoh A       
+
+09384 Caterpie Philipe Paldea D         
+
+00341 Crobat Minoru Hisui B             
+
+05441 Zubat Rod.Lima Galar D            
+
+07460 Gloom Baldochi Paldea C           
+
+01796 Metapod Elisa Hisui D             
+
+04097 Zubat Melise Paldea C             
+
+04017 Bulbasaur Philipe Kalos E         
+
+07672 Vaporeon Vanessa Hisui A          
+
+06209 Metapod Rod.Lima Unova B          
+
+03904 Roserade Baldochi Hoenn B         
+
+06511 Pikachu Vanessa Kanto E           
+
+01213 Charizard Elisa Paldea A          
+
+06463 Roserade Elisa Johto D            
+
+02742 Crobat Rafael Hoenn C             
+
+05691 Zubat Philipe Kanto D             
+
+02113 Bulbasaur Minoru Galar B          
+
+01549 Charmander Vanessa Kanto D        
+
+05478 Zubat Melise Unova E              
+
+01176 Gloom Melise Alola B              
+
+00851 Silcoon Baldochi Alola E          
+
+07580 Golbat Vanessa Galar B            
+
+03597 Gloom Rafael Kalos E              
+
+04048 Charmander Vanessa Sinnoh B       
+
+09130 Mewtwo Rafael Unova C             
+
+01791 Gloom Minoru Johto D              
+
+02132 Charmander Melise Alola B         
+
+09453 Metapod Elisa Kanto E             
+
+07711 Rattata Melise Galar E            
+
+04804 Vaporeon Philipe Johto C          
+
+01272 Silcoon Elisa Hoenn B             
+
+03711 Roserade Rod.Lima Johto B         
+
+00539 Roserade Baldochi Hoenn A         
+
+07964 Charizard Rafael Kalos E          
+
+09152 Furret Minoru Johto D             
+
+04350 Charizard Minoru Unova E          
+
+09759 Gloom Melise Kanto B              
+
+03248 Caterpie Baldochi Johto E         
+
+04718 Rattata Minoru Unova E            
+
+03783 Roserade Rafael Unova C           
+
+05808 Bulbasaur Melise Paldea B         
+
+04973 Mewtwo Minoru Galar A             
+
+00293 Dragonite Rafael Hisui D          
+
+07020 Squirtle Elisa Johto B            
+
+01436 Charizard Rod.Lima Alola D        
+
+03034 Roserade Rafael Kalos D           
+
+09062 Metapod Melise Galar C            
+
+03548 Dragonite Rod.Lima Kanto B        
+
+00935 Golbat Melise Hisui A             
+
+00892 Crobat Philipe Sinnoh C           
+
+01075 Silcoon Rafael Paldea C           
+
+01785 Furret Vanessa Alola D            
+
+08471 Charizard Minoru Sinnoh C         
+
+04671 Golbat Minoru Johto B             
+
+05833 Zubat Rod.Lima Hoenn C            
+
+03952 Caterpie Elisa Hisui E            
+
+06462 Vaporeon Baldochi Hoenn B         
+
+04316 Bulbasaur Elisa Hisui C           
+
+03404 Pikachu Vanessa Johto B           
+
+04172 Pikachu Baldochi Hoenn C          
+
+Busca Linear
+===========================
+Tempo medio da busca Linear: 0.001399
+Menor tempo da busca Linear: 0.000000
+Maior tempo da busca Linear: 0.003944
+
+Busca BTree
+===========================
+Tempo medio da busca Btree: 0.000006
+Menor tempo da busca Btree: 0.000000
+Maior tempo da busca Btree: 0.000085

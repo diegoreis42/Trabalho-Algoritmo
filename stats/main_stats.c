@@ -8,8 +8,7 @@
 
 #include "../src/btree.h"
 
-#define SEARCH_NUM 30
-#define NUM_ELEM 10000
+#define SEARCH_NUM 1000
 
 /* Esse programa compara o tempo de pesquisa usando busca linear
  * e utilizando os indices da b-tree
@@ -28,14 +27,14 @@ int main ()
     tree.root = createNode();
 
   // popula arvore binaria
-  for(int i = 0; i < 10000; i++) {
+  for(int i = 0; i < NUM_LINES; i++) {
       insertBTree(&tree, parArray[i]);
   }
 
   printf("Busca Linear\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
-    randN = rand() % NUM_ELEM + 1;
+    randN = rand() % NUM_LINES + 1;
 
     clock_t begin = clock();
       printLineLinear(f, randN);
@@ -55,7 +54,7 @@ int main ()
 printf("Busca BTree\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
-    randN = rand() % NUM_ELEM + 1;
+    randN = rand() % NUM_LINES + 1;
 
     clock_t begin = clock();
       procuraPokemon(tree, randN, f);
