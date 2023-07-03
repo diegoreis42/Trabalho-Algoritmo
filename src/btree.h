@@ -38,3 +38,4 @@ void printBTreeNode(BTreeNode *node);
 void printBTree(BTree *tree);
 BTreeNode* searchNode(BTreeNode *node, int value);
 BTreeNode* searchBTree(BTree *tree, int value);
+void procuraPokemon(BTree tree, int value, FILE *f);

@@ -28,7 +28,6 @@ def set_fixed_size(string, max_size):
 # Save the table to a text file
 filename = "table.txt"
 with open(filename, "w") as file:
-    file.write("ID  Nome  Mestre  Regiao  Rank\n")
     for row in table:
         line = " ".join(map(str, row))
         line = set_fixed_size(line, 40)

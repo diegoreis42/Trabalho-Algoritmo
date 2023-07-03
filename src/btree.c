@@ -177,7 +177,6 @@ BTreeNode* searchNode(BTreeNode* node, int value) {
     }
 
     if (i < node->numKeys && value == node->keys[i].value) {
-      printf("erro aqui\n");
         return node;
     }
 
@@ -188,39 +187,24 @@ BTreeNode* searchNode(BTreeNode* node, int value) {
     return searchNode(node->children[i], value);
 }
 
+void procuraPokemon(BTree tree, int value, FILE *f){
 
-int main (int argc, char *argv[])
-{
-  Par *parArray = processaDados();
-  int value = 6184;
-
-  BTree tree;
-    tree.root = createNode();
-
- for(int i = 0; i < 10000; i++) {
-        printf("Linha Entrada BTree: %d Valor: %d\n", parArray[i].line, parArray[i].value);
-              insertBTree(&tree, parArray[i]);
-            }
   BTreeNode *achou = searchNode(tree.root, value);
 
   if (achou != NULL) {
     for (int i = 0; i < achou->numKeys; i++) {
       if(achou->keys[i].value == value) {
         Par *par = &(achou->keys[i]);
-        printf("Found Par: value=%d, line=%d\n", par->value, par->line);             
+        printLineBtree(f, par->line);
         break;
       }
     }
 
   } else {
-      printf("F\n");
+      printf("404 - Not found\n");
     }
 
 
-
-
-
-  free(parArray);
-  free(achou);
-  return 0;
 }
+
+
