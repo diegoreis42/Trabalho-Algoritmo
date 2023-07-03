@@ -9,7 +9,7 @@ Par* processaDados() {
         return NULL;
     }
 
-    int maxLines = 10000;  // Maximum number of lines
+    int maxLines = NUM_LINES;  // Maximum number of lines
     Par *parArray = (Par *)malloc(maxLines * sizeof(Par));
     if (parArray == NULL) {
         fclose(file);
@@ -38,7 +38,9 @@ void printLineBtree(FILE *f, int line) {
   rewind(f);
 }
 
-int printLineLinear(FILE *f, int id) {
+// itera sobre o arquivo procurando linha com indice
+// igual a id
+int printarLinhaLinear(FILE *f, int id) {
   char buffer[50];
   int h = 0;
 
@@ -57,7 +59,7 @@ int printLineLinear(FILE *f, int id) {
 BTreeNode* createNode() {
     BTreeNode *newNode = (BTreeNode *)malloc(sizeof(BTreeNode));
     if (newNode == NULL) {
-        printf("Memory allocation failed.\n");
+        printf("Alocaçao de memoria falhou :(\n");
         exit(1);
     }
 

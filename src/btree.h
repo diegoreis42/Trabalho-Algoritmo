@@ -9,6 +9,9 @@
 
 #define MIN_KEYS 4
 
+// numero de linhas no arquivo
+#define NUM_LINES 10000
+
 // structs
 typedef struct {
     int value;
