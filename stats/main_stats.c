@@ -32,7 +32,6 @@ int main ()
       insertBTree(&tree, parArray[i]);
   }
 
- printf("Busca Linear\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
     randN = rand() % NUM_ELEM + 1;
@@ -52,7 +51,6 @@ int main ()
   }
 
 
- printf("Busca BTree\n===========================\n");
 // calcula a media, valor max e min para 30 buscas aleatorias
   for(int i = 0; i < SEARCH_NUM; i++) {
     randN = rand() % NUM_ELEM + 1;
@@ -71,10 +69,14 @@ int main ()
       minB = time_spent;
   }
 
+
+  printf("Busca Linear\n===========================\n");
   printf("Tempo medio da busca Linear: %f\n", (double) meanL / SEARCH_NUM);
   printf("Menor tempo da busca Linear: %f\n", minL);
-  printf("Maior tempo da busca Linear: %f\n", maxL);
+  printf("Maior tempo da busca Linear: %f\n\n", maxL);
 
+
+  printf("Busca BTree\n===========================\n");
   printf("Tempo medio da busca Btree: %f\n", (double) meanB / SEARCH_NUM);
   printf("Menor tempo da busca Btree: %f\n", minB);
   printf("Maior tempo da busca Btree: %f\n", maxB);

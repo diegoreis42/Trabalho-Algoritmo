@@ -1,10 +1,15 @@
 #include <stdio.h>
+// arquivo de dados
 #define FILE_NAME "../data/table.txt"
+
 // tamanho de cada linha
 #define SIZE_DATA_LINE 41
-
+// chaves maximas e minimas da arvore
 #define MAX_KEYS 5
 
+#define MIN_KEYS 3
+
+// structs
 typedef struct {
     int value;
     int line;
@@ -22,20 +27,31 @@ typedef struct {
 } BTree;
 
 
-
+// IO
 Par* processaDados();
 
 void printLineBtree(FILE *f, int line);
 
 int printLineLinear(FILE *f, int id);
 
-
-BTreeNode* createNode();
-void splitChild(BTreeNode *parent, int index, BTreeNode *child);
-void insertNonFull(BTreeNode *node, Par par);
-void insertBTree(BTree *tree, Par par);
-void printBTreeNode(BTreeNode *node);
-void printBTree(BTree *tree);
-BTreeNode* searchNode(BTreeNode *node, int value);
-BTreeNode* searchBTree(BTree *tree, int value);
 void procuraPokemon(BTree tree, int value, FILE *f);
+
+// Arvore
+BTreeNode* createNode();
+
+void insertBTree(BTree *tree, Par par);
+
+void printBTree(BTree *tree);
+
+BTreeNode* searchBTree(BTree *tree, int value);
+
+// No
+void splitChild(BTreeNode *parent, int index, BTreeNode *child);
+
+void insertNonFull(BTreeNode *node, Par par);
+
+void printBTreeNode(BTreeNode *node);
+
+BTreeNode* searchNode(BTreeNode *node, int value);
+
+void deleteBTreeKey(BTree *tree, int value);

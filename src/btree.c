@@ -22,7 +22,6 @@ Par* processaDados() {
         sscanf(line, "%d", &(parArray[lineNumber].value));
         parArray[lineNumber].line = lineNumber;
 
-        printf("Linha: %d Valor: %d\n", parArray[lineNumber].line, parArray[lineNumber].value);
         lineNumber++;
     }
 
@@ -204,7 +203,177 @@ void procuraPokemon(BTree tree, int value, FILE *f){
       printf("404 - Not found\n");
     }
 
+}
 
+Par mergeNodes(BTreeNode *node, int mergeChildIndex) {
+    BTreeNode *leftChild = node->children[mergeChildIndex];
+    BTreeNode *rightChild = node->children[mergeChildIndex + 1];
+
+    // Move the key from the parent to the left child
+    leftChild->keys[leftChild->numKeys] = node->keys[mergeChildIndex];
+    leftChild->numKeys++;
+
+    // Move the keys from the right child to the left child
+    for (int i = 0; i < rightChild->numKeys; i++) {
+        leftChild->keys[leftChild->numKeys + i] = rightChild->keys[i];
+    }
+
+    // Move the child pointers from the right child to the left child (if applicable)
+    if (!leftChild->isLeaf) {
+        for (int i = 0; i <= rightChild->numKeys; i++) {
+            leftChild->children[leftChild->numKeys + i] = rightChild->children[i];
+        }
+    }
+
+    // Adjust the parent node keys and child pointers
+    for (int i = mergeChildIndex; i < node->numKeys - 1; i++) {
+        node->keys[i] = node->keys[i + 1];
+        node->children[i + 1] = node->children[i + 2];
+    }
+
+    node->numKeys--;
+
+    // Deallocate memory for the right child node
+    free(rightChild);
+
+    // Return the key that was moved from the parent to the left child
+    return node->keys[mergeChildIndex];
+}
+
+void adjustChild(BTreeNode *node, int childIndex) {
+    BTreeNode *leftChild = node->children[childIndex - 1];
+    BTreeNode *rightChild = node->children[childIndex + 1];
+
+    if (childIndex > 0 && leftChild->numKeys > MIN_KEYS) {
+        // Borrow a key from the left sibling
+        BTreeNode *child = node->children[childIndex];
+        for (int i = child->numKeys; i > 0; i--) {
+            child->keys[i] = child->keys[i - 1];
+        }
+        child->keys[0] = node->keys[childIndex - 1];
+        node->keys[childIndex - 1] = leftChild->keys[leftChild->numKeys - 1];
+
+        if (!child->isLeaf) {
+            for (int i = child->numKeys + 1; i > 0; i--) {
+                child->children[i] = child->children[i - 1];
+            }
+            child->children[0] = leftChild->children[leftChild->numKeys];
+        }
+
+        leftChild->numKeys--;
+        child->numKeys++;
+    } else if (childIndex < node->numKeys && rightChild->numKeys > MIN_KEYS) {
+        // Borrow a key from the right sibling
+        BTreeNode *child = node->children[childIndex];
+        child->keys[child->numKeys] = node->keys[childIndex];
+        node->keys[childIndex] = rightChild->keys[0];
+
+        if (!child->isLeaf) {
+            child->children[child->numKeys + 1] = rightChild->children[0];
+        }
+
+        for (int i = 0; i < rightChild->numKeys - 1; i++) {
+            rightChild->keys[i] = rightChild->keys[i + 1];
+        }
+
+        if (!rightChild->isLeaf) {
+            for (int i = 0; i < rightChild->numKeys; i++) {
+                rightChild->children[i] = rightChild->children[i + 1];
+            }
+        }
+
+        rightChild->numKeys--;
+        child->numKeys++;
+    } else {
+        // Merge the child node with its adjacent sibling
+        if (childIndex > 0) {
+            // Merge with the left sibling
+            mergeNodes(node, childIndex - 1);
+        } else {
+            // Merge with the right sibling
+            mergeNodes(node, childIndex);
+        }
+    }
 }
 
 
+
+void deleteKeyFromNode(BTreeNode *node, int value);
+
+void deleteBTreeKey(BTree *tree, int value) {
+    if (tree->root == NULL) {
+        printf("B-tree is empty.\n");
+        return;
+    }
+
+    deleteKeyFromNode(tree->root, value);
+
+    // If the root becomes empty, replace it with its only child
+    if (tree->root->numKeys == 0) {
+        BTreeNode *oldRoot = tree->root;
+        tree->root = tree->root->children[0];
+        free(oldRoot);
+    }
+}
+
+void deleteKeyFromNode(BTreeNode *node, int value) {
+    int i = 0;
+
+    while (i < node->numKeys && value > node->keys[i].value) {
+        i++;
+    }
+
+    if (i < node->numKeys && value == node->keys[i].value) {
+        // Key found in the current node
+
+        if (node->isLeaf) {
+            // Key found in a leaf node, remove it
+            for (int j = i; j < node->numKeys - 1; j++) {
+                node->keys[j] = node->keys[j + 1];
+            }
+            node->numKeys--;
+        } else {
+            // Key found in an internal node
+            BTreeNode *leftChild = node->children[i];
+            BTreeNode *rightChild = node->children[i + 1];
+
+            if (leftChild->numKeys >= MIN_KEYS) {
+                // Find the predecessor and replace the key with it
+                BTreeNode *predecessor = leftChild;
+                while (!predecessor->isLeaf) {
+                    predecessor = predecessor->children[predecessor->numKeys];
+                }
+                node->keys[i] = predecessor->keys[predecessor->numKeys - 1];
+
+                // Recursively delete the predecessor from the left child
+                deleteKeyFromNode(leftChild, predecessor->keys[predecessor->numKeys - 1].value);
+            } else if (rightChild->numKeys >= MIN_KEYS) {
+                // Find the successor and replace the key with it
+                BTreeNode *successor = rightChild;
+                while (!successor->isLeaf) {
+                    successor = successor->children[0];
+                }
+                node->keys[i] = successor->keys[0];
+
+                // Recursively delete the successor from the right child
+                deleteKeyFromNode(rightChild, successor->keys[0].value);
+            } else {
+                // Merge the key and its right sibling into one node
+                node->keys[i] = mergeNodes(node, i);
+
+                // Recursively delete the key from the merged node
+                deleteKeyFromNode(node->children[i], value);
+            }
+        }
+    } else {
+        // Key not found in the current node, go to the appropriate child node
+        BTreeNode *child = node->children[i];
+
+        if (child->numKeys == MIN_KEYS) {
+            // Perform necessary adjustments before going to the child node
+            adjustChild(node, i);
+        }
+
+        deleteKeyFromNode(child, value);
+    }
+}
